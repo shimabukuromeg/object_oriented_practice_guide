@@ -7,6 +7,13 @@ class Bicycle
     @tire_size = args[:tire_size] || default_tire_size # テンプレートメソッドパターン
   end
 
+  def spares
+    {
+        tire_size: tire_size,
+        chain: chain
+    }
+  end
+
   def default_chain
     '10-speed'
   end
@@ -25,6 +32,10 @@ class RoadBike < Bicycle
     super(args)
   end
 
+  def spares
+    super.merge({tape_color: tape_color})
+  end
+
   # テンプレートメソッドパターン
   def default_tire_size
     '23'
@@ -39,6 +50,10 @@ class MountainBike < Bicycle
     @front_shock = args[:front_shock]
     @rear_shock = args[:rear_shock]
     super(args)
+  end
+
+  def spares
+    super.merge({rear_shock: rear_shock})
   end
 
   # テンプレートメソッドパターン
@@ -62,4 +77,4 @@ mountain_bike = MountainBike.new(
 )
 
 puts mountain_bike.tire_size
-puts road_bike.chain
+puts road_bike.spares
