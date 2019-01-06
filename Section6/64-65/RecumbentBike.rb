@@ -24,3 +24,5 @@ bent = RecumbentBike.new(
 )
 
 puts bent.spares
+
+# => {:tire_size=>nil, :chain=>nil, :flag=>"tall and orage"}
